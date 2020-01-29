@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.2.4.RELEASE</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.testjava</groupId>
+	<artifactId>TestJavaCanalPlus</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>TestJavaCanalPlus</name>
+	<description>Demo project for Spring Boot</description>
+
+	<properties>
+		<java.version>1.8</java.version>
+		<serenity.version>2.0.91</serenity.version>
+		<serenity.cucumber4.version>1.0.30</serenity.cucumber4.version>
+		<cucumber.version>4.8.1</cucumber.version>
+		<junit.version>4.13</junit.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.junit.vintage</groupId>
+					<artifactId>junit-vintage-engine</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+            <groupId>net.serenity-bdd</groupId>
+            <artifactId>serenity-core</artifactId>
+            <version>${serenity.version}</version>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>io.cucumber</groupId>
+                    <artifactId>cucumber-core</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>net.serenity-bdd</groupId>
+            <artifactId>serenity-screenplay</artifactId>
+            <version>${serenity.version}</version>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>io.cucumber</groupId>
+                    <artifactId>cucumber-core</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>net.serenity-bdd</groupId>
+            <artifactId>serenity-cucumber4</artifactId>
+            <version>${serenity.cucumber4.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-core</artifactId>
+            <version>${cucumber.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>${cucumber.version}</version>
+        </dependency>
+<!--         <dependency> -->
+<!--             <groupId>io.cucumber</groupId> -->
+<!--             <artifactId>cucumber-junit</artifactId> -->
+<!--             <version>${cucumber.version}</version> -->
+<!--         </dependency> -->
+
+<!--         <dependency> -->
+<!-- 			<groupId>junit</groupId> -->
+<!-- 			<artifactId>junit</artifactId> -->
+<!-- 		</dependency> -->
+		<dependency>
+		     <groupId>org.mock-server</groupId>
+		     <artifactId>mockserver-netty</artifactId>
+		     <version>5.8.1</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.mock-server</groupId>
+		    <artifactId>mockserver-client</artifactId>
+		    <version>3.2</version>
+		</dependency>
+		<dependency>
+		    <groupId>com.google.code.gson</groupId>
+		    <artifactId>gson</artifactId>
+		</dependency>
+
+		<dependency>
+		    <groupId>org.apache.httpcomponents</groupId>
+		    <artifactId>httpclient</artifactId>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.testng</groupId>
+		    <artifactId>testng</artifactId>
+		    <version>6.14.3</version>
+		    <scope>test</scope>
+		</dependency>
+
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-testng</artifactId>
+            <version>5.1.0</version>
+        </dependency>
+        <dependency>
+		    <groupId>io.cucumber</groupId>
+		    <artifactId>cucumber-guice</artifactId>
+		    <version>5.1.0</version>
+		</dependency>
+		<dependency>
+            <groupId>org.uncommons</groupId>
+            <artifactId>reportng</artifactId>
+            <version>1.1.2</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.testng</groupId>
+                    <artifactId>testng</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>net.serenity-bdd.maven.plugins</groupId>
+				<artifactId>serenity-maven-plugin</artifactId>
+				<version>2.0.91</version>
+				<executions>
+					<execution>
+						<id>serenity-reports</id>
+						<phase>post-integration-test</phase>
+						<goals>
+							<goal>aggregate</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<testFailureIgnore>true</testFailureIgnore>
+					<properties>
+<!-- 			            <property> -->
+<!-- 			                <name>listener</name> -->
+<!-- 			                <value>org.mockserver.maven.StopMockServerTestListener</value> -->
+<!-- 			            </property> -->
+			        </properties>
+				</configuration>
+			</plugin>
+			<plugin>
+			    <groupId>org.mock-server</groupId>
+			    <artifactId>mockserver-maven-plugin</artifactId>
+			    <version>5.8.1</version>
+			    <configuration>
+			        <serverPort>1088</serverPort>
+			        <proxyPort>1098</proxyPort>
+			        <logLevel>INFO</logLevel>
+			        <jvmOptions>-Dcom.couchbase.client.core.deps.io.netty.noUnsafe=false</jvmOptions>
+<!-- 			        <initializationClass>org.mockserver.maven.ExampleInitializationClass</initializationClass> -->
+			    </configuration>
+			    <executions>
+			        <execution>
+			            <id>process-test-classes</id>
+			            <phase>process-test-classes</phase>
+			            <goals>
+			                <goal>start</goal>
+			            </goals>
+			        </execution>
+			        <execution>
+			            <id>verify</id>
+			            <phase>verify</phase>
+			            <goals>
+			                <goal>stop</goal>
+			            </goals>
+			        </execution>
+			    </executions>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
