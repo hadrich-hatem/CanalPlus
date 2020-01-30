@@ -15,7 +15,7 @@
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
-		<java.version>1.8</java.version>
+		<java.version>10</java.version>
 		<serenity.version>2.0.91</serenity.version>
 		<serenity.cucumber4.version>1.0.30</serenity.cucumber4.version>
 		<cucumber.version>4.8.1</cucumber.version>
@@ -31,7 +31,7 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
+<!-- 			<scope>test</scope> -->
 			<exclusions>
 				<exclusion>
 					<groupId>org.junit.vintage</groupId>
@@ -43,25 +43,11 @@
             <groupId>net.serenity-bdd</groupId>
             <artifactId>serenity-core</artifactId>
             <version>${serenity.version}</version>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>io.cucumber</groupId>
-                    <artifactId>cucumber-core</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>net.serenity-bdd</groupId>
             <artifactId>serenity-screenplay</artifactId>
             <version>${serenity.version}</version>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>io.cucumber</groupId>
-                    <artifactId>cucumber-core</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>net.serenity-bdd</groupId>
@@ -79,16 +65,16 @@
             <artifactId>cucumber-java</artifactId>
             <version>${cucumber.version}</version>
         </dependency>
-<!--         <dependency> -->
-<!--             <groupId>io.cucumber</groupId> -->
-<!--             <artifactId>cucumber-junit</artifactId> -->
-<!--             <version>${cucumber.version}</version> -->
-<!--         </dependency> -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-junit</artifactId>
+            <version>${cucumber.version}</version>
+        </dependency>
 
-<!--         <dependency> -->
-<!-- 			<groupId>junit</groupId> -->
-<!-- 			<artifactId>junit</artifactId> -->
-<!-- 		</dependency> -->
+        <dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+		</dependency>
 		<dependency>
 		     <groupId>org.mock-server</groupId>
 		     <artifactId>mockserver-netty</artifactId>
@@ -109,34 +95,23 @@
 		    <artifactId>httpclient</artifactId>
 		</dependency>
 		
-		<dependency>
-		    <groupId>org.testng</groupId>
-		    <artifactId>testng</artifactId>
-		    <version>6.14.3</version>
-		    <scope>test</scope>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 		    <groupId>org.testng</groupId> -->
+<!-- 		    <artifactId>testng</artifactId> -->
+<!-- 		    <version>6.14.3</version> -->
+<!-- 		    <scope>test</scope> -->
+<!-- 		</dependency> -->
 
-        <dependency>
-            <groupId>io.cucumber</groupId>
-            <artifactId>cucumber-testng</artifactId>
-            <version>5.1.0</version>
-        </dependency>
-        <dependency>
-		    <groupId>io.cucumber</groupId>
-		    <artifactId>cucumber-guice</artifactId>
-		    <version>5.1.0</version>
-		</dependency>
-		<dependency>
-            <groupId>org.uncommons</groupId>
-            <artifactId>reportng</artifactId>
-            <version>1.1.2</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.testng</groupId>
-                    <artifactId>testng</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
+<!--         <dependency> -->
+<!--             <groupId>io.cucumber</groupId> -->
+<!--             <artifactId>cucumber-testng</artifactId> -->
+<!--             <version>5.1.0</version> -->
+<!--         </dependency> -->
+<!--         <dependency> -->
+<!-- 		    <groupId>io.cucumber</groupId> -->
+<!-- 		    <artifactId>cucumber-guice</artifactId> -->
+<!-- 		    <version>5.1.0</version> -->
+<!-- 		</dependency> -->
 	</dependencies>
 
 	<build>
@@ -165,10 +140,10 @@
 				<configuration>
 					<testFailureIgnore>true</testFailureIgnore>
 					<properties>
-<!-- 			            <property> -->
-<!-- 			                <name>listener</name> -->
-<!-- 			                <value>org.mockserver.maven.StopMockServerTestListener</value> -->
-<!-- 			            </property> -->
+			            <property>
+			                <name>listener</name>
+			                <value>org.mockserver.maven.StopMockServerTestListener</value>
+			            </property>
 			        </properties>
 				</configuration>
 			</plugin>
